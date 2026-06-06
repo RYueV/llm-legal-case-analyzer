@@ -1,0 +1,34 @@
+{
+  "case_number": "",
+  "court_name": "",
+  "instance": "",
+  "act_type": "",
+  "act_date": "",
+  "judge_name": "",
+
+  "debtor_bankruptcy_type": "",
+  "procedure_stage": "",
+  "dispute_object": "",
+  "applicant_role": "",
+  "objector_profile": "",
+
+  "obligation_period_text": "",
+  "crisis_period": "",
+
+  "final_decision_text": "",
+  "decisive_features_text": "",
+  "non_material_features_text": "",
+
+  "sufficient_evidence_summary": "",
+  "insufficient_evidence_summary": "",
+
+  "motivation_facts_detailed": "",
+  "motivation_affiliation_only": "",
+  "motivation_economic_sense": "",
+  "motivation_crisis": "",
+  "motivation_independent_creditors": "",
+  "motivation_market_terms": "",
+  "motivation_good_faith": "",
+  "motivation_formalistic": "",
+  "motivation_contradictory": ""
+}

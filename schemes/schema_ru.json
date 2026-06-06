@@ -1,0 +1,538 @@
+{
+  "purpose": "Разметка и сравнение судебных актов по экономическим спорам о субординации, аффилированности, компенсационном финансировании, мнимости/фиктивности требований, цессии, суброгации, реституции и обычных хозяйственных сделках с аффилированными лицами.",
+  "general_rules": {
+    "field_output_structure": {
+      "value": "значение поля из допустимого списка или текстовое значение",
+      "evidence_quote": "короткая точная цитата из судебного акта; если прямой опоры нет, пустая строка",
+      "evidence_source": "court_reasoning | party_position | procedural_history | quoted_document | operative_part | header | none; например: page=5; zone=court_reasoning",
+      "confidence": "high | medium | low"
+    },
+    "unknown_policy": "Если нет надежной текстовой опоры, ставится unknown. Для text-полей допускается пустая строка.",
+    "court_reasoning_priority": "Квалификационные и оценочные поля заполняются только по выводу суда, а не по позиции стороны.",
+    "party_position_rule": "Если значение содержится только в доводах стороны, но не принято судом, для квалификационных полей ставится unknown.",
+    "quote_rule": "evidence_quote должен быть проверяемым фрагментом исходного текста. Нельзя писать пересказ вместо цитаты.",
+    "location_rule": "evidence_location обязателен, если evidence_quote не пустой.",
+    "binary_values": {
+      "yes": "признак прямо установлен или принят судом",
+      "no": "суд прямо отверг признак или указал на его отсутствие",
+      "unknown": "нет надежной опоры для yes или no"
+    },
+    "confidence_values": {
+      "high": "есть прямая цитата суда и источник соответствует типу поля",
+      "medium": "есть текстовая опора, но формулировка требует осторожной интерпретации",
+      "low": "признак не установлен; обычно используется вместе с unknown"
+    }
+  },
+  "sections": {
+    "metadata": {
+      "case_number": {
+        "type": "text",
+        "description": "Номер основного дела о банкротстве.",
+        "values": "строка"
+      },
+      "court_name": {
+        "type": "text",
+        "description": "Суд, вынесший текущий акт.",
+        "values": "строка"
+      },
+      "instance": {
+        "type": "categorical",
+        "description": "Инстанция текущего акта.",
+        "values": {
+          "first": "суд первой инстанции",
+          "appeal": "апелляционная инстанция",
+          "cassation": "кассационная инстанция",
+          "supreme_court_single_judge": "судья Верховного Суда РФ, например отказ или передача жалобы",
+          "supreme_court_economic_board": "Судебная коллегия по экономическим спорам Верховного Суда РФ",
+          "unknown": "инстанция не определена"
+        }
+      },
+      "act_type": {
+        "type": "categorical",
+        "description": "Тип судебного акта.",
+        "values": {
+          "decision": "решение",
+          "ruling": "определение",
+          "resolution": "постановление",
+          "review": "обзор судебной практики",
+          "plenum_resolution": "постановление Пленума",
+          "unknown": "тип не определен"
+        }
+      },
+      "act_date": {
+        "type": "text",
+        "description": "Дата судебного акта или полного текста.",
+        "values": "строка"
+      },
+      "judge_name": {
+        "type": "text",
+        "description": "Судья или состав суда.",
+        "values": "строка"
+      }
+    },
+    "procedure": {
+      "debtor_bankruptcy_type": {
+        "type": "categorical",
+        "description": "Тип должника.",
+        "values": {
+          "legal_entity": "юридическое лицо",
+          "individual": "физическое лицо",
+          "unknown": "не установлено"
+        }
+      },
+      "procedure_stage": {
+        "type": "categorical",
+        "description": "Стадия банкротства.",
+        "values": {
+          "observation": "наблюдение",
+          "financial_rehabilitation": "финансовое оздоровление",
+          "external_management": "внешнее управление",
+          "bankruptcy_proceedings": "конкурсное производство",
+          "simplified_liquidation_bankruptcy": "упрощенная процедура ликвидируемого должника",
+          "other": "иная процедура",
+          "not_stated": "стадия прямо не указана",
+          "unknown": "не установлено"
+        }
+      },
+      "dispute_object": {
+        "type": "categorical",
+        "description": "Процессуальный предмет обособленного спора.",
+        "values": {
+          "claim_inclusion": "включение требования в реестр",
+          "claim_priority": "очередность, понижение или субординация требования",
+          "transaction_invalidity": "оспаривание сделки",
+          "procedural_succession": "процессуальное правопреемство или замена кредитора",
+          "creditor_voting_rights": "право голоса кредитора в процедуре",
+          "manager_action_complaint": "жалоба на действия или бездействие управляющего",
+          "other": "иной предмет спора",
+          "unknown": "предмет не установлен"
+        }
+      },
+      "applicant_role": {
+        "type": "categorical",
+        "description": "Кто инициировал спор или жалобу в текущем акте.",
+        "values": {
+          "creditor": "кредитор-заявитель",
+          "manager": "арбитражный управляющий",
+          "debtor": "должник",
+          "authorized_body": "уполномоченный орган",
+          "independent_creditor": "независимый кредитор",
+          "other": "иное лицо",
+          "multiple" : "несколько заявителей",
+          "unknown": "не установлено"
+        }
+      },
+      "objector_profile": {
+        "type": "categorical",
+        "description": "Кто возражал против требования или позиции заявителя.",
+        "values": {
+          "none": "возражения не указаны",
+          "manager": "возражал управляющий",
+          "independent_creditor": "возражал независимый кредитор",
+          "authorized_body": "возражал уполномоченный орган",
+          "debtor": "возражал должник",
+          "multiple": "несколько возражающих",
+          "other": "иное лицо",
+          "unknown": "не установлено"
+        }
+      }
+    },
+    "economic_dispute": {
+      "economic_dispute_basket": {
+        "type": "categorical",
+        "description": "Типовой экономико-правовой сценарий спора.",
+        "values": {
+          "compensation_financing_loan": "заем, финансирование или оставление ресурса в кризис как возможное компенсационное финансирование",
+          "ordinary_affiliated_business_deal": "обычная хозяйственная сделка с аффилированным лицом: поставка, подряд, аренда, услуги и т.п.",
+          "sham_or_fictitious_debt": "мнимый, фиктивный, искусственный или недоказанный долг",
+          "covering_relationship": "прикрывающее отношение, соглашение о покрытии, скрытый интерес должника или контролирующего лица",
+          "cession_or_purchase_of_claim": "цессия или покупка требования к банкроту",
+          "subrogation_guarantee_or_security": "суброгация, поручительство, гарантия, залог или исполнение за должника",
+          "restitution_after_avoidance": "реституционное требование после признания сделки недействительной",
+          "contractual_subordination": "договорная субординация или межкредиторский приоритет",
+          "refusal_to_subordinate_despite_affiliation": "аффилированность есть, но суд не применяет субординацию",
+          "procedural_issue": "преимущественно процессуальный спор, а не спор о природе долга",
+          "mixed": "несколько равнозначных сценариев",
+          "other": "иной сценарий",
+          "unknown": "сценарий не установлен"
+        }
+      }
+    },
+    "creditor_profile": {
+      "creditor_status": {
+        "type": "categorical",
+        "description": "Статус кредитора по выводу суда.",
+        "values": {
+          "independent": "суд считает кредитора независимым",
+          "affiliated": "суд установил аффилированность без контроля",
+          "controlling": "суд установил контроль над должником",
+          "formerly_independent_later_affiliated": "требование возникло у независимого кредитора, связь появилась позже",
+          "factually_connected_without_formal_affiliation": "формальной связи нет, но суд установил фактическую связанность",
+          "unknown": "статус не установлен"
+        }
+      },
+      "formal_affiliation_found": {
+        "type": "binary",
+        "description": "Суд установил формальную аффилированность."
+      },
+      "factual_affiliation_found": {
+        "type": "binary",
+        "description": "Суд установил фактическую аффилированность или согласованность действий."
+      },
+      "control_found": {
+        "type": "binary",
+        "description": "Суд установил контроль или возможность определять действия должника."
+      },
+      "connection_basis_primary": {
+        "type": "categorical",
+        "description": "Главное основание связи, на которое опирается суд.",
+        "values": {
+          "equity_participation": "участие в капитале",
+          "management": "руководство или управленческая роль",
+          "group_of_companies": "одна группа компаний",
+          "beneficial_control": "бенефициарный контроль",
+          "family_ties": "семейные связи",
+          "economic_dependence": "экономическая зависимость",
+          "factual_control": "фактический контроль",
+          "coordinated_actions": "согласованные действия",
+          "security_control_only": "только обеспечительный контроль, без бенефициарного контроля",
+          "none": "связь не установлена",
+          "other": "иное основание",
+          "unknown": "основание не установлено"
+        }
+      }
+    },
+    "claim": {
+      "claim_type": {
+        "type": "categorical",
+        "description": "Юридическая форма требования.",
+        "values": {
+          "loan": "заем",
+          "supply": "поставка",
+          "lease": "аренда",
+          "works_or_services": "работы или услуги",
+          "guarantee": "поручительство или гарантия",
+          "subrogation": "суброгация",
+          "cession": "цессия",
+          "restitution": "реституция",
+          "payment_for_debtor": "оплата долга за должника",
+          "corporate": "корпоративное требование",
+          "mixed": "смешанное основание",
+          "other": "иной тип",
+          "unknown": "тип не установлен"
+        }
+      },
+      "claim_origin": {
+        "type": "categorical",
+        "description": "Экономико-правовая природа требования по выводу суда; это интерпретационное поле, не базовый факт.",
+        "values": {
+          "real_financing": "реальное финансирование без признаков искусственности",
+          "compensation_financing": "компенсационное финансирование",
+          "corporate_financing": "финансирование корпоративной природы",
+          "ordinary_business_debt": "обычный коммерческий долг",
+          "artificial_debt": "искусственно созданная задолженность",
+          "intragroup_turnover": "внутригрупповое перераспределение или круговое движение средств",
+          "unknown": "природа не установлена"
+        }
+      },
+      "emergence_timing": {
+        "type": "categorical",
+        "description": "Момент возникновения обязательства относительно кризиса и процедуры.",
+        "values": {
+          "before_crisis": "до имущественного кризиса",
+          "during_crisis": "во время имущественного кризиса",
+          "after_bankruptcy_filing": "после подачи заявления о банкротстве",
+          "after_first_procedure": "после введения первой процедуры банкротства",
+          "period_not_established": "период обсуждался, но не установлен",
+          "unknown": "момент не установлен"
+        }
+      },
+      "obligation_period_text": {
+        "type": "text",
+        "description": "Конкретная дата или период возникновения обязательства.",
+        "values": "строка"
+      }
+    },
+    "crisis": {
+      "crisis_status": {
+        "type": "categorical",
+        "description": "Оценка наличия имущественного кризиса судом.",
+        "values": {
+          "established": "кризис установлен",
+          "not_established": "кризис не установлен или отвергнут",
+          "not_analyzed": "кризис не анализировался",
+          "unknown": "не установлено"
+        }
+      },
+      "crisis_period": {
+        "type": "text",
+        "description": "Дата или период имущественного кризиса.",
+        "values": "строка"
+      },
+      "crisis_basis_summary": {
+        "type": "text",
+        "description": "Краткое указание, на чем суд основывает вывод о кризисе.",
+        "values": "строка"
+      },
+      "creditor_knew_crisis": {
+        "type": "binary",
+        "description": "Суд указал на фактическое знание кредитора о кризисе."
+      },
+      "creditor_should_have_known_crisis": {
+        "type": "binary",
+        "description": "Суд указал на вмененное знание кредитора о кризисе."
+      }
+    },
+    "behavior": {
+      "new_financing_provided": {
+        "type": "binary",
+        "description": "Суд установил предоставление нового финансирования или имущественного эквивалента."
+      },
+      "left_funds_in_debtor": {
+        "type": "binary",
+        "description": "Суд установил оставление финансирования или ресурса у должника."
+      },
+      "did_not_demand_repayment": {
+        "type": "binary",
+        "description": "Суд указал, что кредитор не требовал возврата долга."
+      },
+      "changed_contract_terms": {
+        "type": "binary",
+        "description": "Суд указал на изменение условий договора."
+      },
+      "extended_maturity": {
+        "type": "binary",
+        "description": "Суд указал на продление срока возврата или исполнения."
+      },
+      "obtained_security": {
+        "type": "binary",
+        "description": "Суд установил, что кредитор получил обеспечение исполнения обязательства (залог, поручительство, гарантию, ипотеку и т.п.)."
+      },
+      "obtained_preference": {
+        "type": "binary",
+        "description": "Суд установил, что поведение или структура сделки обеспечили кредитору преимущественное положение перед другими кредиторами."
+      },
+      "participated_in_management": {
+        "type": "binary",
+        "description": "Суд установил участие кредитора в корпоративном, фактическом или оперативном управлении должником."
+      },
+      "acted_as_market_creditor": {
+        "type": "binary",
+        "description": "Суд признал поведение кредитора рыночным или обычным коммерческим."
+      }
+    },
+    "market_terms": {
+      "interest_terms": {
+        "type": "categorical",
+        "description": "Процентные условия.",
+        "values": {
+          "market": "суд признал условия рыночными",
+          "below_market": "ниже рыночных",
+          "zero_interest": "беспроцентные",
+          "above_market": "выше рыночных",
+          "not_applicable": "не применимо",
+          "not_analyzed": "не анализировалось",
+          "unknown": "не установлено"
+        }
+      },
+      "maturity_terms": {
+        "type": "categorical",
+        "description": "Условия срока возврата или исполнения.",
+        "values": {
+          "market": "обычный рыночный срок",
+          "prolonged": "срок продлен",
+          "unusually_long": "аномально длинный срок",
+          "short_bridge": "краткосрочное мостовое финансирование",
+          "not_applicable": "не применимо",
+          "not_analyzed": "не анализировалось",
+          "unknown": "не установлено"
+        }
+      },
+      "security_terms": {
+        "type": "categorical",
+        "description": "Наличие и характер обеспечения.",
+        "values": {
+          "secured": "обеспеченное требование",
+          "unsecured": "необеспеченное требование",
+          "mixed": "частично обеспеченное или несколько видов обеспечения",
+          "not_applicable": "не применимо",
+          "unknown": "не установлено"
+        }
+      },
+      "economic_sense_present": {
+        "type": "binary",
+        "description": "Суд признал наличие разумного экономического смысла сделки или поведения."
+      },
+      "market_conditions_overall": {
+        "type": "categorical",
+        "description": "Сводная судебная оценка рыночности; интерпретационное поле.",
+        "values": {
+          "market": "условия признаны рыночными",
+          "deviates_from_market": "условия существенно отклоняются от рыночных",
+          "mixed": "смешанная оценка",
+          "not_analyzed": "не анализировалось",
+          "unknown": "не установлено"
+        }
+      }
+    },
+    "proof": {
+      "performance_fact_proven": {
+        "type": "binary",
+        "description": "Суд признал доказанным фактическое исполнение по сделке: передача денег, товара, работ, услуг или иного имущественного предоставления."
+      },
+      "documents_present": {
+        "type": "binary",
+        "description": "Суд указал, что в деле есть документы, подтверждающие сделку, исполнение или размер долга."
+      },
+      "documents_contradictory": {
+        "type": "binary",
+        "description": "Суд указал, что документы противоречат друг другу, вызывают сомнения или не согласуются с фактическими обстоятельствами"
+      },
+      "primary_docs_absent": {
+        "type": "binary",
+        "description": "Суд указал, что отсутствуют первичные документы, необходимые для подтверждения сделки, исполнения или долга."
+      },
+      "court_recognized_debt_real": {
+        "type": "binary",
+        "description": "Суд признал, что задолженность реально существовала, а не была искусственно создана только для включения в реестр."
+      },
+      "court_doubted_reality": {
+        "type": "binary",
+        "description": "Суд выразил сомнения в реальности сделки, исполнения, долга или экономической основы требования."
+      },
+      "court_found_sham_or_artificial": {
+        "type": "categorical",
+        "description": "Установил ли суд мнимость или искусственность.",
+        "values": {
+          "no": "суд прямо отверг мнимость, притворность или искусственное создание задолженности",
+          "sham": "суд установил мнимость или притворность сделки",
+          "artificial": "суд установил искусственное формирование задолженности",
+          "sham_and_artificial": "суд установил и мнимость/притворность сделки, и искусственное формирование задолженности",
+          "unknown": "не установлено"
+        }
+      }
+    },
+    "proof_burden": {
+      "heightened_standard_applied": {
+        "type": "binary",
+        "description": "Суд применил повышенный стандарт раскрытия или доказывания к связанному кредитору."
+      },
+      "burden_to_remove_doubts_on_creditor": {
+        "type": "binary",
+        "description": "Суд возложил на кредитора бремя снятия разумных сомнений."
+      },
+      "presumption_comp_financing_applied": {
+        "type": "binary",
+        "description": "Суд применил подход или презумпцию компенсационного финансирования."
+      },
+      "creditor_rebutted_doubts": {
+        "type": "categorical",
+        "description": "Удалось ли кредитору снять сомнения суда.",
+        "values": {
+          "yes": "сомнения сняты",
+          "no": "сомнения не сняты",
+          "partially": "сомнения сняты частично",
+          "not_analyzed": "не анализировалось",
+          "unknown": "не установлено"
+        }
+      },
+      "sufficient_evidence_summary": {
+        "type": "text",
+        "description": "Какие доказательства суд счел достаточными.",
+        "values": "строка"
+      },
+      "insufficient_evidence_summary": {
+        "type": "text",
+        "description": "Каких доказательств, по мнению суда, не хватило.",
+        "values": "строка"
+      }
+    },
+    "qualification": {
+      "legal_qualification": {
+        "type": "categorical",
+        "description": "Итоговая юридическая квалификация требования или результата.",
+        "values": {
+          "included_general": "требование включено на общих основаниях",
+          "subordinated": "требование субординировано или понижено",
+          "refused": "отказано во включении требования",
+          "current_claim": "требование признано текущим",
+          "corporate_claim": "требование признано корпоративным",
+          "recognized_as_compensation_financing": "требование квалифицировано как компенсационное финансирование, но итог очередности отдельно неясен",
+          "remand": "акт отменен или спор направлен на новое рассмотрение",
+          "unknown": "не установлено"
+        }
+      },
+      "final_decision_text": {
+        "type": "text",
+        "description": "Краткая резолютивная формула исхода.",
+        "values": "строка"
+      },
+      "key_reason_category": {
+        "type": "categorical",
+        "description": "Главная причина исхода по выводу суда; используется для объяснения, а не как базовый признак сходства.",
+        "values": {
+          "compensation_financing": "компенсационное финансирование",
+          "corporate_nature": "корпоративная природа требования",
+          "sham_or_artificial_debt": "мнимый или искусственный долг",
+          "reality_not_proven": "реальность долга не доказана",
+          "no_crisis_at_relevant_moment": "кризис отсутствовал в релевантный момент",
+          "market_behavior": "рыночное поведение кредитора",
+          "abuse_of_control_over_procedure": "злоупотребление контролем над процедурой",
+          "no_affiliation_or_control_proven": "аффилированность или контроль не доказаны",
+          "procedural_remand": "процессуальная неполнота или направление на новое рассмотрение",
+          "mixed_reasons": "несколько сопоставимых причин",
+          "other": "иная причина",
+          "unknown": "не установлено"
+        }
+      },
+      "decisive_features_text": {
+        "type": "text",
+        "description": "1–3 признака, которые суд сделал решающими.",
+        "values": "строка"
+      },
+      "non_material_features_text": {
+        "type": "text",
+        "description": "Что суд упомянул, но не счел определяющим.",
+        "values": "строка"
+      }
+    },
+    "motivation": {
+      "motivation_facts_detailed": {
+        "type": "binary",
+        "description": "Суд подробно анализирует фактические обстоятельства."
+      },
+      "motivation_affiliation_only": {
+        "type": "binary",
+        "description": "Мотивировка фактически сводится к аффилированности без полноценного анализа кризиса, рынка и доказательств."
+      },
+      "motivation_economic_sense": {
+        "type": "binary",
+        "description": "Суд анализирует экономический смысл сделки или поведения."
+      },
+      "motivation_crisis": {
+        "type": "binary",
+        "description": "Суд анализирует наличие и момент кризиса."
+      },
+      "motivation_independent_creditors": {
+        "type": "binary",
+        "description": "Суд соотносит вывод с защитой независимых кредиторов."
+      },
+      "motivation_market_terms": {
+        "type": "binary",
+        "description": "Суд анализирует рыночность условий."
+      },
+      "motivation_good_faith": {
+        "type": "binary",
+        "description": "Суд анализирует добросовестность или злоупотребление."
+      },
+      "motivation_formalistic": {
+        "type": "binary",
+        "description": "Вышестоящий суд прямо критикует формальный подход."
+      },
+      "motivation_contradictory": {
+        "type": "binary",
+        "description": "Суд прямо указывает на противоречивость выводов."
+      }
+    }
+  }
+}

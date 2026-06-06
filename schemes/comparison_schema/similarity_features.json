@@ -1,0 +1,48 @@
+{
+  "economic_dispute_basket": "",
+
+  "claim_type": "",
+  "claim_origin": "",
+  "emergence_timing": "",
+
+  "creditor_status": "",
+  "formal_affiliation_found": "",
+  "factual_affiliation_found": "",
+  "control_found": "",
+  "connection_basis_primary": "",
+
+  "crisis_status": "",
+  "creditor_knew_crisis": "",
+  "creditor_should_have_known_crisis": "",
+
+  "new_financing_provided": "",
+  "left_funds_in_debtor": "",
+  "did_not_demand_repayment": "",
+  "changed_contract_terms": "",
+  "extended_maturity": "",
+  "obtained_security": "",
+  "obtained_preference": "",
+  "participated_in_management": "",
+  "acted_as_market_creditor": "",
+
+  "interest_terms": "",
+  "maturity_terms": "",
+  "security_terms": "",
+  "economic_sense_present": "",
+  "market_conditions_overall": "",
+
+  "performance_fact_proven": "",
+  "documents_contradictory": "",
+  "primary_docs_absent": "",
+  "court_recognized_debt_real": "",
+  "court_doubted_reality": "",
+  "court_found_sham_or_artificial": "",
+
+  "heightened_standard_applied": "",
+  "burden_to_remove_doubts_on_creditor": "",
+  "presumption_comp_financing_applied": "",
+  "creditor_rebutted_doubts": "",
+
+  "legal_qualification": "",
+  "key_reason_category": ""
+}

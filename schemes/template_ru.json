@@ -1,0 +1,431 @@
+{
+  "document_id": "",
+  "annotation": {
+    "metadata": {
+      "case_number": {
+        "value": "unknown",
+        "evidence_source": "none",
+        "evidence_quote": ""
+      },
+      "court_name": {
+        "value": "unknown",
+        "evidence_source": "none",
+        "evidence_quote": ""
+      },
+      "instance": {
+        "value": "unknown",
+        "evidence_source": "none",
+        "evidence_quote": ""
+      },
+      "act_type": {
+        "value": "unknown",
+        "evidence_source": "none",
+        "evidence_quote": ""
+      },
+      "act_date": {
+        "value": "unknown",
+        "evidence_source": "none",
+        "evidence_quote": ""
+      },
+      "judge_name": {
+        "value": "unknown",
+        "evidence_source": "none",
+        "evidence_quote": ""
+      }
+    },
+    "procedure": {
+      "debtor_bankruptcy_type": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "procedure_stage": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "dispute_object": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "applicant_role": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "objector_profile": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "economic_dispute": {
+      "economic_dispute_basket": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "creditor_profile": {
+      "creditor_status": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "formal_affiliation_found": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "factual_affiliation_found": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "control_found": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "connection_basis_primary": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "claim": {
+      "claim_type": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "claim_origin": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "emergence_timing": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "obligation_period_text": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "crisis": {
+      "crisis_status": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "crisis_period": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "crisis_basis_summary": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "creditor_knew_crisis": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "creditor_should_have_known_crisis": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "behavior": {
+      "new_financing_provided": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "left_funds_in_debtor": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "did_not_demand_repayment": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "changed_contract_terms": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "extended_maturity": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "obtained_security": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "obtained_preference": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "participated_in_management": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "acted_as_market_creditor": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "market_terms": {
+      "interest_terms": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "maturity_terms": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "security_terms": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "economic_sense_present": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "market_conditions_overall": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "proof": {
+      "performance_fact_proven": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "documents_present": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "documents_contradictory": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "primary_docs_absent": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "court_recognized_debt_real": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "court_doubted_reality": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "court_found_sham_or_artificial": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "proof_burden": {
+      "heightened_standard_applied": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "burden_to_remove_doubts_on_creditor": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "presumption_comp_financing_applied": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "creditor_rebutted_doubts": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "sufficient_evidence_summary": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "insufficient_evidence_summary": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "qualification": {
+      "legal_qualification": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "final_decision_text": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "key_reason_category": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "decisive_features_text": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "non_material_features_text": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    },
+    "motivation": {
+      "motivation_facts_detailed": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_affiliation_only": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_economic_sense": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_crisis": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_independent_creditors": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_market_terms": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_good_faith": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_formalistic": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      },
+      "motivation_contradictory": {
+        "value": "unknown",
+        "evidence_quote": "",
+        "evidence_source": "none",
+        "confidence": "low"
+      }
+    }
+  },
+  "audit": {
+    "overall_status": "not_audited",
+    "manual_review_required": [],
+    "critical_conflicts": [],
+    "quote_check_required": true
+  }
+}
